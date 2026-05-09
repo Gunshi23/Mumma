@@ -87,6 +87,17 @@
     <div class="glow bottom-[-10%] right-[-10%]"></div>
     <div id="heart-container"></div>
 
+    <!-- Audio source: A soft, royalty-free piano instrumental -->
+    <audio id="bg-music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808f3030e.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Music Toggle -->
+    <button id="music-toggle" class="fixed bottom-6 right-6 z-[60] glass w-12 h-12 rounded-full flex items-center justify-center text-xl shadow-xl border border-pink-500/30 hover:scale-110 transition-all">
+        <span id="music-icon">🔇</span>
+    </button>
+
     <!-- NAVBAR -->
     <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
@@ -252,17 +263,35 @@
     </footer>
 
     <script>
-        // Scroll Reveal Observer
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
+        const music = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+        const musicIcon = document.getElementById('music-icon');
+        let isPlaying = false;
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicIcon.innerHTML = "🔇";
+            } else {
+                music.play().catch(e => console.log("Audio play blocked until interaction"));
+                musicIcon.innerHTML = "🎵";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent trigger from global click
+            toggleMusic();
+        });
+
+        // Autoplay Workaround: Start music on first user interaction with the page
+        document.body.addEventListener('click', function startOnInteraction() {
+            if (!isPlaying) {
+                toggleMusic();
+            }
+            // Remove listener after first successful interaction
+            document.body.removeEventListener('click', startOnInteraction);
+        }, { once: true });
 
         // Heart Particle System
         const container = document.getElementById('heart-container');
