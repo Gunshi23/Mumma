@@ -1,516 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Mother's Day 💖</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-      scroll-behavior:smooth;
-    }
-
-    body{
-      background:#050505;
-      color:white;
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at top left, rgba(255,0,128,0.35), transparent 30%),
-      radial-gradient(circle at bottom right, rgba(255,255,255,0.08), transparent 25%);
-      z-index:-1;
-    }
-
-    /* NAVBAR */
-
-    nav{
-      position:sticky;
-      top:0;
-      width:100%;
-      padding:18px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      backdrop-filter:blur(18px);
-      background:rgba(255,255,255,0.05);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      z-index:1000;
-    }
-
-    .logo{
-      font-size:1.7rem;
-      font-weight:700;
-      color:#ff9ed0;
-    }
-
-    nav ul{
-      display:flex;
-      list-style:none;
-      gap:18px;
-    }
-
-    nav a{
-      text-decoration:none;
-      color:white;
-      padding:10px 18px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.06);
-      transition:0.3s;
-    }
-
-    nav a:hover{
-      background:#ff4fa3;
-      transform:translateY(-2px);
-    }
-
-    .menu-toggle{
-      display:none;
-      font-size:2rem;
-      cursor:pointer;
-    }
-
-    /* HERO */
-
-    section{
-      min-height:100vh;
-      padding:100px 8%;
-    }
-
-    .hero{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:60px;
-      flex-wrap:wrap;
-    }
-
-    .hero-text{
-      flex:1;
-      min-width:300px;
-    }
-
-    .hero-text h1{
-      font-size:4.5rem;
-      line-height:1.1;
-      margin-bottom:25px;
-      background:linear-gradient(to right,#ff9ed0,white);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .hero-text p{
-      color:#d0d0d0;
-      line-height:1.9;
-      font-size:1.1rem;
-    }
-
-    .buttons{
-      margin-top:35px;
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:14px 28px;
-      border-radius:999px;
-      border:none;
-      cursor:pointer;
-      font-size:1rem;
-      transition:0.3s;
-      text-decoration:none;
-      color:white;
-    }
-
-    .primary{
-      background:#ff4fa3;
-      box-shadow:0 10px 30px rgba(255,79,163,0.35);
-    }
-
-    .secondary{
-      border:1px solid rgba(255,255,255,0.2);
-      background:transparent;
-    }
-
-    .btn:hover{
-      transform:translateY(-4px) scale(1.03);
-    }
-
-    .hero-image{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      min-width:300px;
-    }
-
-    .hero-image img{
-      width:100%;
-      max-width:420px;
-      height:550px;
-      object-fit:cover;
-      border-radius:40px;
-      border:1px solid rgba(255,255,255,0.15);
-      box-shadow:0 25px 50px rgba(255,0,128,0.2);
-    }
-
-    /* TITLES */
-
-    .title{
-      text-align:center;
-      margin-bottom:70px;
-    }
-
-    .title h2{
-      font-size:3rem;
-      color:#ff9ed0;
-      margin-bottom:12px;
-    }
-
-    .title p{
-      color:#b5b5b5;
-    }
-
-    /* MEMORIES */
-
-    .memory-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:30px;
-    }
-
-    .card{
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:32px;
-      overflow:hidden;
-      backdrop-filter:blur(14px);
-      transition:0.4s;
-    }
-
-    .card:hover{
-      transform:translateY(-10px);
-      box-shadow:0 20px 40px rgba(255,79,163,0.2);
-    }
-
-    .card img{
-      width:100%;
-      height:320px;
-      object-fit:cover;
-    }
-
-    .card-content{
-      padding:25px;
-    }
-
-    .card-content h3{
-      color:#ff9ed0;
-      margin-bottom:14px;
-      font-size:1.5rem;
-    }
-
-    .card-content p{
-      color:#d4d4d4;
-      line-height:1.8;
-    }
-
-    /* GALLERY */
-
-    .gallery{
-      columns:3 250px;
-      gap:20px;
-    }
-
-    .gallery img{
-      width:100%;
-      margin-bottom:20px;
-      border-radius:24px;
-      transition:0.4s;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .gallery img:hover{
-      transform:scale(1.03);
-    }
-
-    /* LETTER */
-
-    .letter-box{
-      max-width:900px;
-      margin:auto;
-      padding:60px;
-      border-radius:40px;
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.08);
-      backdrop-filter:blur(20px);
-      line-height:2;
-      font-size:1.15rem;
-      color:#ececec;
-    }
-
-    .letter-box h2{
-      font-size:3rem;
-      color:#ff9ed0;
-      margin-bottom:30px;
-      text-align:center;
-    }
-
-    /* FOOTER */
-
-    footer{
-      text-align:center;
-      padding:35px;
-      color:#b0b0b0;
-      border-top:1px solid rgba(255,255,255,0.08);
-    }
-
-    /* MOBILE */
-
-    @media(max-width:900px){
-
-      nav{
-        padding:18px 6%;
-      }
-
-      .menu-toggle{
-        display:block;
-      }
-
-      nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:rgba(0,0,0,0.96);
-        backdrop-filter:blur(20px);
-        flex-direction:column;
-        align-items:center;
-        gap:25px;
-        padding:30px 0;
-        display:none;
-      }
-
-      nav ul.active{
-        display:flex;
-      }
-
-      .hero{
-        text-align:center;
-      }
-
-      .buttons{
-        justify-content:center;
-      }
-
-      .hero-text h1{
-        font-size:3rem;
-      }
-
-      .hero-image img{
-        height:450px;
-      }
-
-      .letter-box{
-        padding:35px;
-      }
-
-    }
-
-    @media(max-width:600px){
-
-      section{
-        padding:80px 6%;
-      }
-
-      .hero-text h1{
-        font-size:2.3rem;
-      }
-
-      .title h2{
-        font-size:2.2rem;
-      }
-
-      .letter-box h2{
-        font-size:2.2rem;
-      }
-
-      .letter-box{
-        font-size:1rem;
-      }
-
-    }
-
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Happy Mother's Day | To My Queen 💖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff4fa3;
+            --secondary: #ff9ed0;
+            --bg-dark: #0a0a0c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Glassmorphism utility */
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Heart Particles Animation */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .heart-particle {
+            position: fixed;
+            color: var(--primary);
+            pointer-events: none;
+            z-index: 1;
+            animation: float linear forwards;
+        }
+
+        /* Soft Glow Effects */
+        .glow-pink {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 79, 163, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Card Hover Effects */
+        .card-zoom:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body>
+<body class="selection:bg-pink-500 selection:text-white">
 
-  <!-- NAVBAR -->
+    <div class="glow-pink top-[-10%] left-[-10%]"></div>
+    <div class="glow-pink bottom-[-10%] right-[-10%]"></div>
+    <div id="heart-container"></div>
 
-  <nav>
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl">💖</span>
+                <span class="text-xl font-bold tracking-tight text-pink-300">Dearest Mom</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#home" class="hover:text-pink-400 transition-colors">Home</a>
+                <a href="#memories" class="hover:text-pink-400 transition-colors">Memories</a>
+                <a href="#gallery" class="hover:text-pink-400 transition-colors">Gallery</a>
+                <a href="#letter" class="hover:text-pink-400 transition-colors">Letter</a>
+            </div>
 
-    <div class="logo">Mom 💖</div>
+            <button id="surprise-btn" class="bg-pink-600 hover:bg-pink-500 text-white px-5 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-pink-600/20">
+                Surprise! ✨
+            </button>
+        </div>
+    </nav>
 
-    <div class="menu-toggle" id="menu-toggle">
-      ☰
-    </div>
+    <section id="home" class="min-h-screen flex items-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-sm font-medium">
+                    May 12th • A Special Day
+                </div>
+                <h1 class="text-5xl md:text-7xl font-serif leading-tight">
+                    Happy <br> 
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-300 italic">Mother's Day</span>
+                </h1>
+                <p class="text-lg text-gray-400 max-w-lg leading-relaxed">
+                    Thank you for being the light in my darkest days and the strength in my weakest moments. This digital garden is a small token of my infinite love for you.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#letter" class="bg-white text-black hover:bg-gray-200 px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2 group">
+                        Read My Letter 
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                    <a href="#memories" class="glass px-8 py-4 rounded-full font-bold hover:bg-white/10 transition-all">Explore Memories</a>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-pink-600 to-rose-400 rounded-[2rem] blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                <div class="relative overflow-hidden rounded-[2rem] border border-white/10 aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?auto=format&fit=crop&q=80&w=800" alt="Mother's Day Flowers" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8">
+                        <p class="text-pink-200 font-serif italic text-2xl">"To the world, you are a mother. To me, you are the world."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <ul id="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#memories">Memories</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#letter">Letter</a></li>
-    </ul>
+    <section id="memories" class="py-24 px-6 bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 space-y-4 reveal">
+                <h2 class="text-4xl md:text-5xl font-serif">Precious Moments</h2>
+                <div class="w-20 h-1 bg-pink-500 mx-auto rounded-full"></div>
+                <p class="text-gray-400">Chapters of our beautiful journey together</p>
+            </div>
 
-  </nav>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Memory 1 -->
+                <div class="reveal group">
+                    <div class="glass p-4 rounded-[2rem] h-full transition-transform duration-500 hover:-translate-y-2">
+                        <div class="overflow-hidden rounded-2xl mb-6 aspect-square card-zoom">
+                            <img src="https://images.unsplash.com/photo-1484981138541-3d074aa97716?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-700" alt="Safe Place">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-pink-200">My Safe Place</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm">Your hugs have a magical way of making everything better. Thank you for being my constant sanctuary.</p>
+                    </div>
+                </div>
 
-  <!-- HOME -->
+                <!-- Memory 2 -->
+                <div class="reveal group" style="transition-delay: 100ms;">
+                    <div class="glass p-4 rounded-[2rem] h-full transition-transform duration-500 hover:-translate-y-2">
+                        <div class="overflow-hidden rounded-2xl mb-6 aspect-square card-zoom">
+                            <img src="https://images.unsplash.com/photo-1544126592-807daf21565c?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-700" alt="Forever Hero">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-pink-200">Forever Hero</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm">Watching your strength and resilience has taught me more about life than any book ever could.</p>
+                    </div>
+                </div>
 
-  <section id="home">
+                <!-- Memory 3 -->
+                <div class="reveal group" style="transition-delay: 200ms;">
+                    <div class="glass p-4 rounded-[2rem] h-full transition-transform duration-500 hover:-translate-y-2">
+                        <div class="overflow-hidden rounded-2xl mb-6 aspect-square card-zoom">
+                            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-700" alt="Best Teacher">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-pink-200">Kindest Heart</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm">Every kindness I show, every bit of empathy I have, I learned it by simply watching you be you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="hero">
+    <section id="gallery" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 reveal">
+                <div class="space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-serif">A Glimpse of Love</h2>
+                    <p class="text-gray-400 max-w-md">Collection of snapshots capturing your radiant smile and the beauty you bring to our lives.</p>
+                </div>
+                <div class="text-pink-400 font-medium">Scroll to view &rarr;</div>
+            </div>
 
-      <div class="hero-text">
+            <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=500" alt="Flower 1" class="rounded-3xl w-full hover:opacity-80 transition cursor-pointer reveal">
+                <img src="https://images.unsplash.com/photo-1464852045489-bccb7d17fe39?auto=format&fit=crop&q=80&w=500" alt="Flower 2" class="rounded-3xl w-full hover:opacity-80 transition cursor-pointer reveal">
+                <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?auto=format&fit=crop&q=80&w=500" alt="Flower 3" class="rounded-3xl w-full hover:opacity-80 transition cursor-pointer reveal">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=500" alt="Portrait 1" class="rounded-3xl w-full hover:opacity-80 transition cursor-pointer reveal">
+                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&q=80&w=500" alt="Flower 4" class="rounded-3xl w-full hover:opacity-80 transition cursor-pointer reveal">
+                <img src="https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&q=80&w=500" alt="Flower 5" class="rounded-3xl w-full hover:opacity-80 transition cursor-pointer reveal">
+            </div>
+        </div>
+    </section>
 
-        <h1>Happy Mother's Day 🌸</h1>
+    <section id="letter" class="py-24 px-6 bg-gradient-to-b from-transparent to-pink-900/10">
+        <div class="max-w-3xl mx-auto">
+            <div class="glass p-8 md:p-16 rounded-[3rem] shadow-2xl reveal">
+                <div class="text-center mb-10">
+                    <span class="text-4xl">💌</span>
+                    <h2 class="text-4xl font-serif mt-4 italic">A Letter from my Heart</h2>
+                </div>
+                
+                <div class="space-y-6 text-gray-200 leading-loose text-lg font-light">
+                    <p>Dear Mom,</p>
+                    <p>
+                        There aren't enough words in any language to express the depth of my gratitude for everything you have done. From the sleepless nights of my childhood to the unwavering support you offer me today, you have been my constant North Star.
+                    </p>
+                    <p>
+                        Your strength is my inspiration, your kindness is my map, and your love is my greatest treasure. You've taught me how to be brave, how to be gentle, and how to see the beauty in even the simplest things.
+                    </p>
+                    <p>
+                        I hope this little corner of the internet brings a smile to your face, just as you have brought countless smiles to mine. You deserve the world today, and every other day of the year.
+                    </p>
+                    <div class="pt-8 text-right">
+                        <p class="text-pink-300 font-serif text-2xl italic">With all my love,</p>
+                        <p class="text-xl font-bold mt-2">Your Loving Child ❤️</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <p>
-          Thank you for your endless love, care, sacrifices, and strength.
-          Every beautiful thing in my life exists because of you.
-          This little website is made with all my love just for you ❤️
+    <footer class="py-12 border-t border-white/5 text-center px-6">
+        <p class="text-gray-500 text-sm">
+            Crafted with infinite love for the World's Best Mother. <br>
+            <span class="mt-2 block italic">© 2024 Mother's Day Tribute</span>
         </p>
+    </footer>
 
-        <div class="buttons">
-          <a href="#gallery" class="btn primary">View Memories ✨</a>
-          <a href="#letter" class="btn secondary">Read Letter 💌</a>
-        </div>
+    <script>
+        
+        // Scroll Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
 
-      </div>
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      <div class="hero-image">
-        <img src="1.jpeg">
-      </div>
+        // Heart Particle System
+        function createHeart(burst = false) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = ['❤️', '💖', '🌸', '✨', '💕'][Math.floor(Math.random() * 5)];
+            
+            const startX = burst ? window.innerWidth / 2 : Math.random() * window.innerWidth;
+            const startY = burst ? window.innerHeight / 2 : window.innerHeight + 50;
+            const size = (Math.random() * 20 + 10) + 'px';
+            const duration = (Math.random() * 3 + 3) + 's';
+            
+            heart.style.left = startX + 'px';
+            if(burst) heart.style.top = startY + 'px';
+            else heart.style.bottom = '-50px';
+            
+            heart.style.fontSize = size;
+            heart.style.animationDuration = duration;
+            
+            document.getElementById('heart-container').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
 
-    </div>
+        // Ambient particles
+        setInterval(() => createHeart(false), 800);
 
-  </section>
+        // Surprise Button Logic
+        const surpriseBtn = document.getElementById('surprise-btn');
+        surpriseBtn.addEventListener('click', () => {
+            // Trigger 30 hearts at once
+            for(let i = 0; i < 30; i++) {
+                setTimeout(() => createHeart(true), i * 50);
+            }
+            
+            surpriseBtn.textContent = "Love You! ❤️";
+            setTimeout(() => {
+                surpriseBtn.textContent = "Surprise! ✨";
+            }, 3000);
+        });
 
-  <!-- MEMORIES -->
-
-  <section id="memories">
-
-    <div class="title">
-      <h2>Precious Memories ✨</h2>
-      <p>Moments that stay forever in my heart.</p>
-    </div>
-
-    <div class="memory-grid">
-
-      <div class="card">
-        <img src="2.jpeg">
-
-        <div class="card-content">
-          <h3>My Safe Place</h3>
-          <p>Your hugs always heal everything ❤️</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="3.jpeg">
-
-        <div class="card-content">
-          <h3>Forever Hero</h3>
-          <p>You always put my happiness before yours ✨</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="4.jpeg">
-
-        <div class="card-content">
-          <h3>Best Memories</h3>
-          <p>Every moment with you feels magical 💖</p>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- GALLERY -->
-
-  <section id="gallery">
-
-    <div class="title">
-      <h2>Photo Gallery 📸</h2>
-      <p>Replace these with your own photos.</p>
-    </div>
-
-    <div class="gallery">
-
-      <img src="5.jpeg">
-      <img src="6.jpeg">
-      <img src="7.jpeg">
-      <img src="8.jpeg">
-      <img src="9.jpeg">
-      <img src="10.jpeg">
-
-    </div>
-
-  </section>
-
-  <!-- LETTER -->
-
-  <section id="letter">
-
-    <div class="letter-box">
-
-      <h2>A Letter To Mom 💌</h2>
-
-      <p>
-        Mom, thank you for every sacrifice, every prayer, every sleepless night,
-        and every smile you gave just to make me happy.
-        You are my first friend, my forever guide, and the strongest person I know.
-        <br><br>
-        No matter where life takes me, your love will always be my home.
-        I hope this tiny website reminds you how deeply loved and appreciated you are today and forever ❤️
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-    Made with infinite love for the best mother in the world 🌸
-  </footer>
-
-  <!-- JAVASCRIPT -->
-
-  <script>
-
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
-
-    menuToggle.onclick = () => {
-      navLinks.classList.toggle("active");
-    };
-
-  </script>
-
+        // Smooth Scroll for Nav
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
